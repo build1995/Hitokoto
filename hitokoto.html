@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="full-screen" content="yes">
+    <title>hitokoto - 一言</title>
+    <link rel="stylesheet" href="hitokoto.css">
+    <script src=lib/jquery-3.3.1.min.js></script>
+    <script src=lib/nebPay.js></script>
+    <script src=lib/nebulas.js></script>
+    <script src="hitokoto.js"></script>
+</head>
+<body>
+
+	<div class="windows">
+		<div class="content">
+			<p class="hitokoto"> </p>
+			<p class="from"> </p>
+			<div class="progress-con">
+				<div class="progress-time" style="left:0%"></div>
+			</div>
+		</div>
+		<div class="button">
+			<input type="button" class="sub" value="New">
+		</div>
+    </div>
+    <div class="windows hide" id="Add">
+		<div class="content">
+            <input type="text" id="word" value="一言内容" class="input">
+            <input type="text" id="from" value="来源" class="input">
+		</div>
+		<div class="button">
+			<input type="button" class="add" value="Add">
+		</div>
+    </div>
+    <div class="noExtension hide" id="noExtension">
+            NOTE: Please install <a target="_blank" href="https://github.com/ChengOrangeJu/WebExtensionWallet">WebExtensionWallet</a>  to use SUPER DICTIONARY
+        </div>
+	
+
+</body>
+<footer><a href="" target="_blank"> 一个基于星云链的 一言Hitokoto</a></footer>
+<script>
+
+
+    var NebPay = require("nebpay");     //https://github.com/nebulasio/nebPay
+var nebPay = new NebPay();
+//检查扩展是否已安装
+//如果安装了扩展，var“webExtensionWallet”将被注入到web页面中1
+if(typeof(webExtensionWallet) === "undefined") {
+	$("#noExtension").removeClass("hide");
+	alert ("扩展钱包未安装，请先安装.")
+}
+</script>
+
+</html>
